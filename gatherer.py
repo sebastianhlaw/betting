@@ -12,8 +12,8 @@ baseString = "http://www.oddsportal.com/soccer/england/premier-league-"
 years = int(2)
 urls = int(years*8)
 
-urlFull = [None]
-for year in range(2012,2013):
+urlFull = [];
+for year in range(2012,2012+years):
     urlStart = "http://www.oddsportal.com/soccer/england/premier-league-"+str(year)+"-"+str(year+1)+"/results/"
     for page in range(8,1,-1):
         if page != 1:
