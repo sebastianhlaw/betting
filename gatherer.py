@@ -18,5 +18,6 @@ for year in range(2012,2013):
     for page in range(8,1,-1):
         if page != 1:
             urlFull.append( urlStart + "page/" + str(page) + "/")
+    urlFull.append( urlStart )
 
 print(urlFull)
