@@ -4,7 +4,7 @@ import lxml.html, lxml.etree
 import datetime
 import pandas as pd
 
-def stripper(urlTarget):
+def stripper(url):
 
     # response = urllib.request.urlopen('http://python.org/')
     # html = response.read()
@@ -16,7 +16,7 @@ def stripper(urlTarget):
     # r = render.Render(urlDirty)
     # html = r.frame.toHtml()
     urlCleaned = './source/testx.htm'
-    local = open(urlCleaned)
+    local = open(urlCleaned, encoding='utf-8', mode='r', errors='ignore') # should be utf-8, but there's a dodgy somewhere, so we ignore
     html = local.read()
     doc = lxml.html.fromstring(html)
 
@@ -56,8 +56,6 @@ def stripper(urlTarget):
             for col in range(3):
                 odds[col] = row.xpath("td")[col+3].xpath("a")[0].text
             # results
-            # print(teams[0], teams[1], scores[0], scores[1], odds[0], odds[1], odds[2])
             frame.loc[i] = [matchdate, teams[0], teams[1], scores[0], scores[1], odds[0], odds[1], odds[2]]
             i = i+1
-    # print(frame)
     return frame
